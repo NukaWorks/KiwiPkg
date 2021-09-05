@@ -1,0 +1,9 @@
+{
+  "name": "kiwi-pkg",
+  "version": "0.0.0",
+  "description": "KiwiPkg",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  }
+}

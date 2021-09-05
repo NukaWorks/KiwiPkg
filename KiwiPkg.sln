@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31612.314
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "KiwiPkg", "KiwiPkg\KiwiPkg.njsproj", "{B77196A5-3E13-48DC-9025-CCFD51D56898}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B77196A5-3E13-48DC-9025-CCFD51D56898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B77196A5-3E13-48DC-9025-CCFD51D56898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B77196A5-3E13-48DC-9025-CCFD51D56898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B77196A5-3E13-48DC-9025-CCFD51D56898}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9E5BC8C6-FE66-4F42-8107-97B60C120454}
+	EndGlobalSection
+EndGlobal
