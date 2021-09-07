@@ -1,0 +1,9 @@
+{
+  "name": "kiwi-pkg_test-mod",
+  "version": "0.0.0",
+  "description": "KiwiPkg_TestMod",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  }
+}

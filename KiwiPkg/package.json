@@ -1,9 +1,16 @@
 {
   "name": "kiwi-pkg",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "KiwiPkg",
-  "main": "app.js",
+  "main": "src/kiwipkg.js",
+  "type": "module",
   "author": {
-    "name": ""
+    "name": "Sundev79 <sundev79@nutdevs.org>"
+  },
+  "exports": {
+    ".": "./src/kiwipkg.js"
+  },
+  "dependencies": {
+    "nodegit": "^0.27.0"
   }
 }

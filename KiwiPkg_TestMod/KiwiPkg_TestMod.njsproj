@@ -2,16 +2,16 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <Name>KiwiPkg</Name>
-    <RootNamespace>KiwiPkg</RootNamespace>
+    <Name>KiwiPkg_TestMod</Name>
+    <RootNamespace>KiwiPkg_TestMod</RootNamespace>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>b77196a5-3e13-48dc-9025-ccfd51d56898</ProjectGuid>
+    <ProjectGuid>f2bfa2c4-7fe5-4712-a1d7-6c0c61a376c7</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>src\kiwipkg.js</StartupFile>
+    <StartupFile>app.js</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -28,15 +28,9 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="src\kiwipkg.js" />
-    <Content Include="src\KiwiLocalRepo.js">
-      <SubType>Code</SubType>
-    </Content>
+    <Content Include="app.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
 </Project>
