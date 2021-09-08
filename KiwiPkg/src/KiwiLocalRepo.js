@@ -6,7 +6,6 @@ import pkg from 'nodegit';
 const { Clone } = pkg;
 import glob from 'glob';
 import termkit from 'terminal-kit';
-import path from 'path';
 
 export default class KiwiLocalRepo {
 
