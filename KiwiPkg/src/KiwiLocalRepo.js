@@ -4,6 +4,8 @@ import * as fs from 'fs';
 import { exit } from 'process';
 import pkg from 'nodegit';
 const { Clone } = pkg;
+import glob from 'glob';
+
 
 export default class KiwiLocalRepo {
 
@@ -12,12 +14,12 @@ export default class KiwiLocalRepo {
 
         if (fs.existsSync(this._repoPath)) {
             console.log("File exists");
-            fs.readdirSync(this._repoPath).forEach(e => console.log(e));
-
+            glob(`${localRepoPath}/**`, (err, f) => console.log(f));
+            
 
         }
         else {
-            console.log("file dont exist");
+            console.log("Unable to find LocalRepoFolder :/");
             exit(1);
         }
     }
