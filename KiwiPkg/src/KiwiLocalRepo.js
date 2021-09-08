@@ -40,14 +40,15 @@ export default class KiwiLocalRepo {
                 if (cur.includes(kiwiModManifestName)) { // Module manifest file.
                     termkit.terminal.bold.green(">>> ").white(`Found a KiwiMod inside ${repoName}, getting the module ...\n`);
 
-                    let kiwiModManifestJson = fs.readFileSync(cur, "utf8");
+                    let kiwiModManifestJson = JSON.parse(fs.readFileSync(cur, "utf8"));
                     console.log(kiwiModManifestJson); // Display the module manifest.
 
                     let modPackageJsonDir = cur.replaceAll(kiwiModManifestName, "") + "/package.json";
                     if (fs.existsSync(modPackageJsonDir)) {
                         termkit.terminal.bold.green(">>> ").white("Found package.json 😋\n");
 
-                        let modPackageJson = fs.readFileSync(modPackageJsonDir, "utf8");
+                        let modPackageJson = JSON.parse(fs.readFileSync(modPackageJsonDir, "utf8"));
+
                         console.log(modPackageJson);
 
                     } else {
