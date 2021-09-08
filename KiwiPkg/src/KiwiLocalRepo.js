@@ -6,7 +6,7 @@ import pkg from 'nodegit';
 const { Clone } = pkg;
 import glob from 'glob';
 import termkit from 'terminal-kit';
-
+import path from 'path';
 
 export default class KiwiLocalRepo {
 
@@ -14,9 +14,7 @@ export default class KiwiLocalRepo {
         this._repoPath = localRepoPath;
 
         if (fs.existsSync(this._repoPath)) {
-            console.log("File exists");
-            
-
+            termkit.terminal.bold.green(">>> ").white(`Found local repository at ${this._repoPath}\n`);
         }
         else {
             console.log("Unable to find LocalRepoFolder :/");
@@ -29,19 +27,30 @@ export default class KiwiLocalRepo {
     }
 
     async installPkg(gitUrl) {
+        let kiwiModManifest = "kiwumod.json";
         let repoUrl = gitUrl.split("/");
         let repoName = repoUrl[repoUrl.length - 1].replaceAll(".git", "");
 
-        termkit.terminal.bold.cyan(">>> ").white(`Checking if ${repoName} is not installed ...\n`);
+        termkit.terminal.bold.yellow(">>> ").white(`Checking if ${repoName} is not installed ...\n`);
         if (!fs.existsSync(`${this._repoPath}/${repoName}`)) {
             termkit.terminal.bold.cyan(">>> ").white(`Installing ${repoName} ...\n`);
-            await Clone.clone(gitUrl, `${this._repoPath}/${repoName}`);
+            await Clone.clone(gitUrl, `${this._repoPath}/${repoName}`); // Clone the repo which contains modules.
+            termkit.terminal.bold.yellow(">>> ").white(`Getting more info of the repo ${repoName} ...\n`);
 
             glob(`${this._repoPath}/${repoName}/**`, (err, f) => f.forEach(cur => {
-                console.log(cur);
-                if (cur.includes("kiwimod.json")) console.log(`Found a KiwiMod for ${repoName} !`);
+                if (cur.includes(kiwiModManifest)) { // Module manifest file.
+                    termkit.terminal.bold.green(`Found a KiwiMod inside ${repoName}, getting the module ...\n`);
+
+                    console.log(kiwiModManifest);
+                    if (fs.existsSync(cur.replaceAll(kiwiModManifest, ""))) {
+                        termkit.terminal.bold.green("Found package.json 😋");
+
+                        // let modPackageJson = fs.readFile()
+                    } else termkit.terminal.bold.red(">>> ").bold.red("Unable to find package.json, Aborting... 😅\n");
+
+            }
             }));
-        } else termkit.terminal.bold.red(">>> ").white("Package already installed 😅\n");
+        } else termkit.terminal.bold.red(">>> ").bold.white("Package already installed 😅\n");
 
     }
 }
