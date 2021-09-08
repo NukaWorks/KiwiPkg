@@ -27,7 +27,7 @@ export default class KiwiLocalRepo {
     }
 
     async installPkg(gitUrl) {
-        let kiwiModManifest = "kiwumod.json";
+        let kiwiModManifest = "kiwimod.json";
         let repoUrl = gitUrl.split("/");
         let repoName = repoUrl[repoUrl.length - 1].replaceAll(".git", "");
 
@@ -39,14 +39,15 @@ export default class KiwiLocalRepo {
 
             glob(`${this._repoPath}/${repoName}/**`, (err, f) => f.forEach(cur => {
                 if (cur.includes(kiwiModManifest)) { // Module manifest file.
-                    termkit.terminal.bold.green(`Found a KiwiMod inside ${repoName}, getting the module ...\n`);
-
-                    console.log(kiwiModManifest);
+                    termkit.terminal.bold.green(">>> ").white(`Found a KiwiMod inside ${repoName}, getting the module ...\n`);
                     if (fs.existsSync(cur.replaceAll(kiwiModManifest, ""))) {
-                        termkit.terminal.bold.green("Found package.json 😋");
+                        termkit.terminal.bold.green(">>> ").white("Found package.json 😋");
 
                         // let modPackageJson = fs.readFile()
-                    } else termkit.terminal.bold.red(">>> ").bold.red("Unable to find package.json, Aborting... 😅\n");
+                    } else {
+                        termkit.terminal.bold.red(">>> ").bold.red("Unable to find package.json, Aborting... 😅\n");
+                        return 1;
+                    }
 
             }
             }));
