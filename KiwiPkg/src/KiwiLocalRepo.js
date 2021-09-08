@@ -37,7 +37,10 @@ export default class KiwiLocalRepo {
             termkit.terminal.bold.cyan(">>> ").white(`Installing ${repoName} ...\n`);
             await Clone.clone(gitUrl, `${this._repoPath}/${repoName}`);
 
-            glob(`${this._repoPath}/**`, (err, f) => f.forEach(cur => console.log(cur)));
+            glob(`${this._repoPath}/${repoName}/**`, (err, f) => f.forEach(cur => {
+                console.log(cur);
+                if (cur.includes("kiwimod.json")) console.log(`Found a KiwiMod for ${repoName} !`);
+            }));
         } else termkit.terminal.bold.red(">>> ").white("Package already installed 😅\n");
 
     }
