@@ -48,7 +48,10 @@ export default class KiwiLocalRepo {
                         termkit.terminal.bold.green(">>> ").white("Found package.json 😋\n");
 
                         let modPackageJson = JSON.parse(fs.readFileSync(modPackageJsonDir, "utf8"));
-
+                        if (kiwiModManifestJson.uuid !== null && kiwiModManifestJson.uuid.toString().length !== 8) {
+                            termkit.terminal.bold.red(">>> ").bold.red("Incorrect configuration - uuid is incorrect, Aborting... 😅\n");
+                            return 1;
+                        }
                         console.log(modPackageJson);
 
                     } else {
