@@ -25,6 +25,12 @@ export default class KiwiLocalRepo {
         return this._repoPath;
     }
 
+    abortInstall(packagePath) {
+        if (fs.existsSync(packagePath)) {
+            fs.rmdirSync(packagePath);
+        }
+    }
+
     async installPkg(gitUrl) {
         let kiwiModManifestName = "kiwimod.json";
         let repoUrl = gitUrl.split("/");
